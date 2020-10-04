@@ -1,7 +1,9 @@
+require('dotenv').config();
 var express = require('express');
 var app = express();
 
 var htmlController = require('./controllers/htmlController');
+var apiController = require('./controllers/apiController');
 
 var port = process.env.PORT || 3000;
 
@@ -14,5 +16,6 @@ app.use('/', function (req, res, next) {
 });
 
 htmlController(app);
+apiController(app);
 
 app.listen(port);

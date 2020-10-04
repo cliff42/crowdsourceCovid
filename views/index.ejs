@@ -8,20 +8,18 @@
 	  <title>CrowdsourceCovid</title>
 
 	  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-		  <link rel="stylesheet" href="/assets/css/style.css" type="text/css/">
+		<link rel="stylesheet" href="/assets/css/style.css" type="text/css/">
   
 	  <script src="/node_modules/angular/angular.min.js"></script>
 	  <script src="/node_modules/angular-route/angular-route.min.js"></script>
-		  <script src="/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+		<script src="/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
   
 		  <script src="/assets/js/app.js"></script>
 	
 	  <!-- Bootstrap core CSS -->
-	  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	
-	  <!-- Custom styles for this template -->
-	  <link href="public/css/style.css" rel="stylesheet">
-	
+	  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	  <!-- Bootstrap core JavaScript -->
+	  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	</head>
 	
 	<body>
@@ -55,7 +53,7 @@
 	  </nav> -->
 	
 	  <!-- Page Content -->
-	  <div class="container">
+	  <div class="container" ng-controller="MainCtrl">
 	
 		<div class="row">
 	
@@ -93,7 +91,7 @@
 			<div class="media mb-4">
 				<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
 				<div class="media-body">
-				  <h5 class="mt-0">Commenter Name</h5>
+				  <h5 class="mt-0">{{ commenter }}</h5>
 				  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
 				</div>
 			</div>
@@ -180,11 +178,6 @@
 		</div>
 		<!-- /.container -->
 	  </footer>
-	
-	  <!-- Bootstrap core JavaScript -->
-	  <script src="vendor/jquery/jquery.min.js"></script>
-	  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	
 	</body>
 	
 	</html>
