@@ -4,7 +4,6 @@ angular.module('App')
 	.controller('MainCtrl', MainCtrl);
 	
 function MainCtrl($scope, $http) {
-
 	$http.get('/reviews')
 		.then((res) => {
 			$scope.reviews = res.data;
@@ -35,5 +34,4 @@ function MainCtrl($scope, $http) {
 
 		return propertyName;
 	};
-
 }

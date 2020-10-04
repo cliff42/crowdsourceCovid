@@ -25,34 +25,6 @@
 	
 	<body>
 	
-	  <!-- Navigation
-	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-		  <a class="navbar-brand" href="#">Start Bootstrap</a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
-			  <li class="nav-item active">
-				<a class="nav-link" href="#">Home
-				  <span class="sr-only">(current)</span>
-				</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">About</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">Services</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">Contact</a>
-			  </li>
-			</ul>
-		  </div>
-		</div>
-	  </nav> -->
-	
 	  <!-- Page Content -->
 	  <div class="container" ng-controller="MainCtrl">
 	
@@ -65,9 +37,14 @@
 			<h1 class="mt-4">Crowdsource Covid</h1>
 	
 			<hr>
-	
-			<!-- Preview Image -->
-			<img class="img-fluid rounded" src="https://miro.medium.com/max/4064/1*qYUvh-EtES8dtgKiBRiLsA.png" alt="">
+
+			<iframe
+  				width="100%"
+  				height="450"
+  				frameborder="0" style="border:0"
+  				src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCoZWy6kx_-dZvK06BkhverpQZ6nPk4gao
+    			&q=Space+Needle,Seattle+WA">
+			</iframe>
 	
 			<hr>
 	
@@ -104,11 +81,6 @@
 								<i class="fas fa-meh float-right fa-lg" style="color: darkblue;" ng-show="getPropertyScore(property, review) === 2"></i>
 								<i class="fas fa-smile-wink float-right fa-lg" style="color: darkgreen;" ng-show="getPropertyScore(property, review) === 3"></i>
 							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-	
 			<hr>
 	
 			<!-- Review Form -->
@@ -161,7 +133,7 @@
 	  <!-- Footer -->
 	  <footer class="py-5 bg-dark">
 		<div class="container">
-		  <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+		  <p class="m-0 text-center text-white">Copyright &copy; Crowdsource Covid 2020</p>
 		</div>
 		<!-- /.container -->
 	  </footer>
