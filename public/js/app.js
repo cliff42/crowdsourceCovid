@@ -4,10 +4,29 @@ angular.module('App')
 	.controller('MainCtrl', MainCtrl);
 	
 function MainCtrl($scope, $http) {
-	$http.get('/reviews')
+
+	$scope.dataChanged = function(restName) {
+		$http.get('/reviews', { restName: restName })
 		.then((res) => {
 			$scope.reviews = res.data;
 		});
+	}
+
+	$scope.submitReview = function(restName, name, comment, spaciousness, crowdedness, sanitationAvailability, cleanliness, visitorMaskCompliance, staffMaskCompliance) {
+		$http.post('/reviews', { restName: restName,
+								 name: name,
+								comment: comment,
+								spaciousness: spaciousness,
+								crowdedness: crowdedness,
+								sanitationAvailability: sanitationAvailability,
+								cleanliness: cleanliness,
+								visitorMaskCompliance: visitorMaskCompliance,
+								staffMaskCompliance: staffMaskCompliance
+								})
+		.then((res) => {
+			$scope.reviews = res.data;
+		});
+	}
 
 	$scope.reviewProperties = ['spaciousness', 'crowdedness', 'sanitationAvailability', 'cleanliness', 'visitorMaskCompliance', 'staffMaskCompliance'];
 	$scope.reviews = [

@@ -16,11 +16,18 @@
 		<script src="/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
   
 		  <script src="/assets/js/app.js"></script>
+		  <script src="/assets/js/map.js"></script>
 	
 	  <!-- Bootstrap core CSS -->
 	  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	  <!-- Bootstrap core JavaScript -->
 	  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	  <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoZWy6kx_-dZvK06BkhverpQZ6nPk4gao&callback=initMap&libraries=places&v=weekly"
+      defer
+	></script>
+</init-map>
 	</head>
 	
 	<body>
@@ -67,9 +74,24 @@
 			<hr>
 	
 			<!-- Preview Image -->
-			<img class="img-fluid rounded" src="https://miro.medium.com/max/4064/1*qYUvh-EtES8dtgKiBRiLsA.png" alt="">
-	
-			<hr>
+
+			<div style="display: none">
+				<input
+	  				id="pac-input"
+					  class="form-control"
+					  style="width: 50%;"
+	  				type="text"
+					placeholder="Enter a location"
+					ng-click="dataChanged(place-name)"
+				/>
+  			</div>
+  			<div id="map" style="height: 450px;width: 700px;"></div>
+  			<div id="infowindow-content">
+				<span id="place-name" class="title"></span><br />
+				<strong>Place ID:</strong> <span id="place-id"></span><br />
+				<span id="place-address"></span>
+			</div>
+			<p>&nbsp</p>
 	
 			<!-- Post Content -->
 			<!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
@@ -91,7 +113,7 @@
 
 			<div ng-repeat="review in reviews">
 				<div class="media mb-4">
-					<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+					<img class="d-flex mr-3 rounded-circle" style="width: 50px;height: 50px;" src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png" alt="">
 					<div class="media-body">
 						<h5 class="mt-0">{{ review.name }}</h5>
 						{{ review.comment }}
@@ -116,9 +138,25 @@
 			  <div class="card-body">
 				<form>
 				  <div class="form-group">
-					<textarea class="form-control" rows="3"></textarea>
+					<input type="text" class="form-control reviewerName" placeholder="Name">
+					<br>
+					<input type="text" class="form-control spaciousness" placeholder="Space (1-3)">
+					<br>
+					<input type="text" class="form-control crowdedness" placeholder="Density (1-3)">
+					<br>
+					<input type="text" class="form-control sanitationAvailability" placeholder="Sanitizers (1-3)">
+					<br>
+					<input type="text" class="form-control cleanliness" placeholder="Cleanliness (1-3)">
+					<br>
+					<input type="text" class="form-control visitorMaskCompliance" placeholder="Masks on visitors (1-3)">
+					<br>
+					<input type="text" class="form-control staffMaskCompliance" placeholder="Masks on staff (1-3)">
+					<br>
+					<textarea class="form-control comment" rows="3" placeholder="Comment"></textarea>
 				  </div>
-				  <button type="submit" class="btn btn-primary">Submit</button>
+				  <button type="submit" class="btn btn-primary" ng-click="submitReview(
+					  place-name, reviewerName, comment, spaciousness, crowdedness, 
+					  sanitationAvailability, cleanliness, visitorMaskCompliance, staffMaskCompliance)">Submit</button>
 				</form>
 			  </div>
 			</div>
@@ -141,13 +179,13 @@
 			  </div>
 			</div>
 	
-			<!-- Side Widget -->
+			<!-- Side Widget
 			<div class="card my-4">
 			  <h5 class="card-header">Side Widget</h5>
 			  <div class="card-body">
 				You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
 			  </div>
-			</div>
+			</div> -->
 	
 		  </div>
 	
