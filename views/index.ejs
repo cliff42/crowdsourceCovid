@@ -75,23 +75,20 @@
 	
 			<!-- Preview Image -->
 
-			<div style="display: none">
-				<input
-	  				id="pac-input"
-					  class="form-control"
-					  style="width: 50%;"
-	  				type="text"
-					placeholder="Enter a location"
-				/>
-  			</div>
-  			<div id="map" style="height: 450px;width: 700px;"></div>
-  			<div id="infowindow-content">
-				<span id="place-name" class="title"></span><br />
-				<strong>Place ID:</strong> <span id="place-id"></span><br />
+			<form name="locationForm">
+				<div style="display: none">
+					<input id="pac-input" class="form-control" style="width: 50%;"
+								 type="text" placeholder="Enter a location" name="locationInput"/>
+				</div>
+				<div id="map" style="height: 450px;width: 700px;"></div>
+				<div id="infowindow-content">
+				<span id="place-name" class="title"></span><br/>
+				<span hidden id="place-id"></span><br/>
 				<span id="place-address"></span>
 				<br/>
 				<button class="btn btn-primary" ng-click="dataChanged()">REVIEW&nbsp;<i class="fas fa-pen fa-sm"></i></button>
-			</div>
+				</div>
+			</form>
 			<p>&nbsp</p>
 	
 			<!-- Post Content -->
