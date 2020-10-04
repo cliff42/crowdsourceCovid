@@ -10,10 +10,10 @@ function MainCtrl($scope, $http) {
 	$scope.dataChanged = function() {
 		var placeID = document.getElementById('place-id').textContent;
 		console.log("Place ID: " + placeID);
-		// $http.post('/currentReviews', { restName: restName })
-		// .then((res) => {
-		// 	$scope.reviews = res.data;
-		// });
+		$http.post('/currentReviews', { restName: placeID })
+		.then((res) => {
+			$scope.reviews = res.data;
+		});
 		// $http({
 		// 	url: '/reviews',
 		// 	method: "GET",
@@ -31,19 +31,20 @@ function MainCtrl($scope, $http) {
 		// });
 	}
 
-	$scope.submitReview = function(restName, name, comment, spaciousness, crowdedness, sanitationAvailability, cleanliness, visitorMaskCompliance, staffMaskCompliance) {
-		$http.post('/reviews', { restName: restName,
-								 name: name,
-								comment: comment,
-								spaciousness: spaciousness,
-								crowdedness: crowdedness,
-								sanitationAvailability: sanitationAvailability,
-								cleanliness: cleanliness,
-								visitorMaskCompliance: visitorMaskCompliance,
-								staffMaskCompliance: staffMaskCompliance
-								})
+	$scope.submitReview = function(name, comment, spaciousness, crowdedness, sanitationAvailability, cleanliness, visitorMaskCompliance, staffMaskCompliance) {
+		var placeID = document.getElementById('place-id').textContent;
+		$http.post('/reviews', { restName: "'" + placeID + "'",
+		name: "'" + name + "'",
+	   comment: "'" + comment + "'",
+	   spaciousness: "'" + spaciousness + "'",
+	   crowdedness: "'" + crowdedness + "'",
+	   sanitationAvailability: "'" + sanitationAvailability + "'",
+	   cleanliness: "'" + cleanliness + "'",
+	   visitorMaskCompliance: "'" + visitorMaskCompliance + "'",
+	   staffMaskCompliance: "'" + staffMaskCompliance + "'"
+	   })
 		.then((res) => {
-			$scope.reviews = res.data;
+		$scope.reviews = res.data;
 		});
 	}
 
@@ -74,3 +75,4 @@ function MainCtrl($scope, $http) {
 		return propertyName;
 	};
 }
+

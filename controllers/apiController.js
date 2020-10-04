@@ -26,7 +26,7 @@ module.exports = function(app) {
   
 	app.post('/currentReviews', jsonParser, async function (req, res) {
     console.log(req.body);
-    var sql = "SELECT * FROM reviews WHERE restName="+ req.body.restName + " ORDER BY id DESC LIMIT 5";
+    var sql = "SELECT * FROM reviews WHERE restName='"+ req.body.restName + "' ORDER BY id DESC LIMIT 5";
     connection.query(sql, function(err, results, fields) {
       if (err) {
         return console.error(err.message);
