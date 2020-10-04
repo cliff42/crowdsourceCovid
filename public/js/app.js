@@ -6,11 +6,10 @@ angular.module('App')
 function MainCtrl($scope) {
 	$scope.commenter = "TEST NAME";
 
-	$scope.reviews = [
+	$scope.reviews = 
 		{
 			reviewer: "Name 1",
 			comment: "COMMENTS"
-		}
-	];
+		};
 
 }
