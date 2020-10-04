@@ -82,7 +82,6 @@
 					  style="width: 50%;"
 	  				type="text"
 					placeholder="Enter a location"
-					ng-click="dataChanged(place-id.textContent)"
 				/>
   			</div>
   			<div id="map" style="height: 450px;width: 700px;"></div>
@@ -90,6 +89,7 @@
 				<span id="place-name" class="title"></span><br />
 				<strong>Place ID:</strong> <span id="place-id"></span><br />
 				<span id="place-address"></span>
+				<button class="btn btn-primary" ng-click="dataChanged()"></button>
 			</div>
 			<p>&nbsp</p>
 	
@@ -129,8 +129,8 @@
 						</li>
 					</ul>
 				</div>
+				<hr>
 			</div>
-			<hr>
 	
 			<!-- Review Form -->
 			<div class="card my-4">

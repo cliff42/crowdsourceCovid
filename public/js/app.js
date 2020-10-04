@@ -7,12 +7,13 @@ function MainCtrl($scope, $http) {
 
 	// $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
-	$scope.dataChanged = function(restName) {
-		console.log("Rest Name:" + restName);
-		$http.post('/currentReviews', { restName: restName })
-		.then((res) => {
-			$scope.reviews = res.data;
-		});
+	$scope.dataChanged = function() {
+		var placeID = document.getElementById('place-id').textContent;
+		console.log("Place ID: " + placeID);
+		// $http.post('/currentReviews', { restName: restName })
+		// .then((res) => {
+		// 	$scope.reviews = res.data;
+		// });
 		// $http({
 		// 	url: '/reviews',
 		// 	method: "GET",
@@ -47,12 +48,7 @@ function MainCtrl($scope, $http) {
 	}
 
 	$scope.reviewProperties = ['spaciousness', 'crowdedness', 'sanitationAvailability', 'cleanliness', 'visitorMaskCompliance', 'staffMaskCompliance'];
-	$scope.reviews = [
-		{
-			reviewer: "Name 1",
-			comment: "COMMENTS"
-		}
-	];
+	$scope.place;
 
 	$scope.getPropertyScore = function(property, review) {
 		return review[property];
