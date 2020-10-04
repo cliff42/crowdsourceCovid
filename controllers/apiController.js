@@ -1,4 +1,3 @@
-
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 
@@ -22,8 +21,10 @@ connection.connect(function(err) {
 });
 
 module.exports = function(app) {
+
+  app.use(bodyParser.json());
   
-	app.get('/reviews', jsonParser, async function(req, res) {
+	app.post('/currentReviews', jsonParser, async function (req, res) {
     console.log(req.body);
     var sql = "SELECT * FROM reviews WHERE restName="+ req.body.restName + " ORDER BY id DESC LIMIT 5";
     connection.query(sql, function(err, results, fields) {
@@ -49,13 +50,5 @@ module.exports = function(app) {
       res.json(results);
     });
   });
-  
-  var request = require('request');
-  app.get('/map', async function(req, res) {
-    request('https://www.google.com/maps/embed/v1/place?key=AIzaSyCoZWy6kx_-dZvK06BkhverpQZ6nPk4gao&q=Space+Needle,Seattle+WA', function(error, response, body) {
-      // console.log(error)
-        res.json(body)
-    });
-  })
 	
 };

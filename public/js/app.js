@@ -5,11 +5,29 @@ angular.module('App')
 	
 function MainCtrl($scope, $http) {
 
+	// $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+
 	$scope.dataChanged = function(restName) {
-		$http.get('/reviews', { restName: restName })
+		console.log("Rest Name:" + restName);
+		$http.post('/currentReviews', { restName: restName })
 		.then((res) => {
 			$scope.reviews = res.data;
 		});
+		// $http({
+		// 	url: '/reviews',
+		// 	method: "GET",
+		// 	data: { 'restName' : restName }
+		// }).then((res) => {
+		// 	$scope.reviews = res.data;
+		// });
+		// $http({
+		// 	method: 'GET',
+		// 	url: '/reviews',
+		// 	data: "restName=" + restName,
+		// 	headers: {
+		// 	  'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;'
+		// 	}
+		// });
 	}
 
 	$scope.submitReview = function(restName, name, comment, spaciousness, crowdedness, sanitationAvailability, cleanliness, visitorMaskCompliance, staffMaskCompliance) {
