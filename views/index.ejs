@@ -9,7 +9,6 @@
 
 	  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="/assets/css/style.css" type="text/css/">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
   
 	  <script src="/node_modules/angular/angular.min.js"></script>
 	  <script src="/node_modules/angular-route/angular-route.min.js"></script>
@@ -66,21 +65,24 @@
 	
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p> -->
 
-			<div ng-repeat="review in reviews">
-				<div class="media mb-4">
-					<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-					<div class="media-body">
-						<h5 class="mt-0">{{ review.name }}</h5>
-						{{ review.comment }}
-					</div>
-					<ul>
-						<li ng-repeat="property in reviewProperties" style="list-style-type:none;">
-							<div><b>{{ getPropertyName(property) }}</b> &nbsp; 
-								<i class="fas fa-tired float-right fa-lg" style="color: darkred;" ng-show="getPropertyScore(property, review) === 0"></i>
-								<i class="fas fa-frown-open float-right fa-lg" style="color: darkorange;" ng-show="getPropertyScore(property, review) === 1"></i>
-								<i class="fas fa-meh float-right fa-lg" style="color: darkblue;" ng-show="getPropertyScore(property, review) === 2"></i>
-								<i class="fas fa-smile-wink float-right fa-lg" style="color: darkgreen;" ng-show="getPropertyScore(property, review) === 3"></i>
-							</div>
+			<div class="media mb-4 review-display">
+				<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+				<div class="media-body">
+					<ul style="list-style-type:none;">
+						<li>
+							<h5 class="mt-0">{{reviews.reviewer}}</h5>
+							{{reviews.comment}}
+							<p>&nbsp</p>
+						</li>
+						<li>
+							<h5 class="mt-0">{{reviews.reviewer}}</h5>
+							{{reviews.comment}}
+							<p>&nbsp</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+	
 			<hr>
 	
 			<!-- Review Form -->
