@@ -11,38 +11,6 @@ function MainCtrl($scope, $http) {
 		});
 
 	$scope.reviewProperties = ['spaciousness', 'crowdedness', 'sanitationAvailability', 'cleanliness', 'visitorMaskCompliance', 'staffMaskCompliance'];
-	// $scope.reviews = [
-	// 	{
-	// 		name: "NAME 1",
-	// 		comment: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
-	// 		spaciousness: 0,
-	// 		crowdedness: 1,
-	// 		sanitationAvailability: 0,
-	// 		cleanliness: 0,
-	// 		visitorMaskCompliance: 0,
-	// 		staffMaskCompliance: 0
-	// 	},
-	// 	{
-	// 		name: "NAME 2",
-	// 		comment: "COMMENT 2",
-	// 		spaciousness: 0,
-	// 		crowdedness: 1,
-	// 		sanitationAvailability: 0,
-	// 		cleanliness: 0,
-	// 		visitorMaskCompliance: 0,
-	// 		staffMaskCompliance: 0
-	// 	},
-	// 	{
-	// 		name: "NAME 3",
-	// 		comment: "COMMENT 3",
-	// 		spaciousness: 0,
-	// 		crowdedness: 1,
-	// 		sanitationAvailability: 0,
-	// 		cleanliness: 0,
-	// 		visitorMaskCompliance: 0,
-	// 		staffMaskCompliance: 0
-	// 	}
-	// ];
 
 	$scope.getPropertyScore = function(property, review) {
 		return review[property];
