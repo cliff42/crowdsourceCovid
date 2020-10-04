@@ -10,6 +10,12 @@ function MainCtrl($scope, $http) {
 		});
 
 	$scope.reviewProperties = ['spaciousness', 'crowdedness', 'sanitationAvailability', 'cleanliness', 'visitorMaskCompliance', 'staffMaskCompliance'];
+	$scope.reviews = [
+		{
+			reviewer: "Name 1",
+			comment: "COMMENTS"
+		}
+	];
 
 	$scope.getPropertyScore = function(property, review) {
 		return review[property];
