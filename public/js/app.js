@@ -4,12 +4,22 @@ angular.module('App')
 	.controller('MainCtrl', MainCtrl);
 	
 function MainCtrl($scope, $http) {
+	$scope.reviewProperties = ['spaciousness', 'crowdedness', 'sanitationAvailability', 'cleanliness', 'visitorMaskCompliance', 'staffMaskCompliance'];
+	$scope.submitForm = {
+		name: "",
+		spaciousness: "",
+		crowdedness: "",
+		sanitationAvailability: "",
+		cleanliness: "",
+		visitorMaskCompliance: "",
+		staffMaskCompliance: "",
+		comment: ""
+	}
 
 	// $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
 	$scope.dataChanged = function() {
 		var placeID = document.getElementById('place-id').textContent;
-		console.log("Place ID: " + placeID);
 		$http.post('/currentReviews', { restName: placeID })
 		.then((res) => {
 			$scope.reviews = res.data;
@@ -33,23 +43,36 @@ function MainCtrl($scope, $http) {
 
 	$scope.submitReview = function(name, comment, spaciousness, crowdedness, sanitationAvailability, cleanliness, visitorMaskCompliance, staffMaskCompliance) {
 		var placeID = document.getElementById('place-id').textContent;
-		$http.post('/reviews', { restName: "'" + placeID + "'",
-		name: "'" + name + "'",
-	   comment: "'" + comment + "'",
-	   spaciousness: "'" + spaciousness + "'",
-	   crowdedness: "'" + crowdedness + "'",
-	   sanitationAvailability: "'" + sanitationAvailability + "'",
-	   cleanliness: "'" + cleanliness + "'",
-	   visitorMaskCompliance: "'" + visitorMaskCompliance + "'",
-	   staffMaskCompliance: "'" + staffMaskCompliance + "'"
-	   })
-		.then((res) => {
-		$scope.reviews = res.data;
-		});
-	}
 
-	$scope.reviewProperties = ['spaciousness', 'crowdedness', 'sanitationAvailability', 'cleanliness', 'visitorMaskCompliance', 'staffMaskCompliance'];
-	$scope.place;
+		$http.post('/reviews', { 
+			restName: "'" + placeID + "'",
+			name: "'" + $scope.submitForm.name + "'",
+			comment: "'" + $scope.submitForm.comment + "'",
+			spaciousness: "'" + $scope.submitForm.spaciousness + "'",
+			crowdedness: "'" + $scope.submitForm.crowdedness + "'",
+			sanitationAvailability: "'" + $scope.submitForm.sanitationAvailability + "'",
+			cleanliness: "'" + $scope.submitForm.cleanliness + "'",
+			visitorMaskCompliance: "'" + $scope.submitForm.visitorMaskCompliance + "'",
+			staffMaskCompliance: "'" + $scope.submitForm.staffMaskCompliance + "'"
+	   })
+			.then(() => {
+				$scope.submitForm = {
+					name: "",
+					spaciousness: "",
+					crowdedness: "",
+					sanitationAvailability: "",
+					cleanliness: "",
+					visitorMaskCompliance: "",
+					staffMaskCompliance: "",
+					comment: ""
+				}
+
+				$http.post('/currentReviews', { restName: placeID })
+					.then((res) => {
+						$scope.reviews = res.data;
+					});
+			});
+	}
 
 	$scope.getPropertyScore = function(property, review) {
 		return review[property];

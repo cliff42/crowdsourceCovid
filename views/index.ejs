@@ -139,25 +139,23 @@
 			  <div class="card-body">
 				<form>
 				  <div class="form-group">
-					<input type="text" class="form-control reviewerName" placeholder="Name">
+					<input type="text" class="form-control" placeholder="Name" ng-model="submitForm.name">
 					<br>
-					<input type="text" class="form-control spaciousness" placeholder="Space (1-3)">
+					<input type="text" class="form-control" placeholder="Space (0-3)" ng-model="submitForm.spaciousness">
 					<br>
-					<input type="text" class="form-control crowdedness" placeholder="Density (1-3)">
+					<input type="text" class="form-control" placeholder="Density (0-3)" ng-model="submitForm.crowdedness">
 					<br>
-					<input type="text" class="form-control sanitationAvailability" placeholder="Sanitizers (1-3)">
+					<input type="text" class="form-control" placeholder="Sanitizers (0-3)" ng-model="submitForm.sanitationAvailability">
 					<br>
-					<input type="text" class="form-control cleanliness" placeholder="Cleanliness (1-3)">
+					<input type="text" class="form-control" placeholder="Cleanliness (0-3)" ng-model="submitForm.cleanliness">
 					<br>
-					<input type="text" class="form-control visitorMaskCompliance" placeholder="Masks on visitors (1-3)">
+					<input type="text" class="form-control" placeholder="Masks on visitors (0-3)" ng-model="submitForm.visitorMaskCompliance">
 					<br>
-					<input type="text" class="form-control staffMaskCompliance" placeholder="Masks on staff (1-3)">
+					<input type="text" class="form-control" placeholder="Masks on staff (0-3)" ng-model="submitForm.staffMaskCompliance">
 					<br>
-					<textarea class="form-control comment" rows="3" placeholder="Comment"></textarea>
+					<textarea class="form-control comment" rows="3" placeholder="Comments" ng-model="submitForm.comment"></textarea>
 				  </div>
-				  <button type="submit" class="btn btn-primary" ng-click="submitReview(
-					  place-name, reviewerName, comment, spaciousness, crowdedness, 
-					  sanitationAvailability, cleanliness, visitorMaskCompliance, staffMaskCompliance)">Submit</button>
+				  <button type="submit" class="btn btn-primary" ng-click="submitReview()">Submit</button>
 				</form>
 			  </div>
 			</div>
